@@ -1,7 +1,6 @@
 
 function createtext(parent,name)
     local gui = Instance.new("BillboardGui")
-    syn.protect_gui(gui)
     local esp = Instance.new("TextLabel")
     esp.Parent = gui;
     
