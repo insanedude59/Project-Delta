@@ -1,0 +1,49 @@
+
+function createtext(parent,name)
+    local gui = Instance.new("BillboardGui")
+    syn.protect_gui(gui)
+    local esp = Instance.new("TextLabel")
+    esp.Parent = gui;
+    
+	gui.Name = tostring(name);
+	gui.ResetOnSpawn = false
+	gui.AlwaysOnTop = true;
+	gui.LightInfluence = 0;
+	gui.Size = UDim2.new(1,0.5,1,0.5);
+	gui.Parent = parent
+	esp.BackgroundColor3 = Color3.fromRGB(255, 255, 255);
+	esp.Text = name
+	esp.Size = UDim2.new(1,1,1,1);
+	esp.BorderSizePixel = 0;
+	esp.Font = "GothamMedium"
+	esp.TextSize = 7
+	esp.TextColor3 = Color3.fromRGB(255,255,255) 
+end
+
+for i,v in next,game:GetService("Workspace").Containers:GetChildren() do
+	if v:IsA("Model") then
+		local Highlight = Instance.new("Highlight")
+		Highlight.Parent = v
+		Highlight.OutlineColor = Color3.fromRGB(255,255,255)
+		Highlight.FillColor = Color3.fromRGB(255,0,0)
+		Highlight.Enabled = true
+		Highlight.FillTransparency = 0;
+		Highlight.OutlineTransparency = 0
+
+			createtext(v,tostring(v))
+	end
+end
+function createesp(v)
+    local Highlight = Instance.new("Highlight")
+		Highlight.Parent = v
+		Highlight.OutlineColor = Color3.fromRGB(255,255,255)
+		Highlight.FillColor = Color3.fromRGB(255,0,0)
+		Highlight.Enabled = true
+		Highlight.FillTransparency = 0;
+		Highlight.OutlineTransparency = 0
+
+			createtext(v,tostring(v))
+end
+game:GetService("Workspace").Containers.ChildAdded:Connect(function(child)
+    createesp(child)
+end)
